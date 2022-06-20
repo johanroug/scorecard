@@ -1,0 +1,27 @@
+<form [formGroup]="roundForm" (ngSubmit)="onSubmit()">
+
+  <!-- <strong>
+    {{roundForm.get('name')}}
+  </strong> -->
+
+  Persons:
+  <div formArrayName="persons">
+    <div *ngFor="let person of persons.controls; let i=index">
+      <div [formGroupName]="i">
+        {{i}} <br>
+        <input type="text" formControlName="name"> <br>
+        <input type="text" formControlName="hc">
+        <div formGroupName="holes">
+          <input type="text" formControlName="hole1">
+        </div>
+
+        <button (click)="removePerson(i)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
+<button type="button" (click)="addPerson()">Add</button>
+
+<pre>{{this.roundForm.value | json}}</pre>
