@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      this.getCourse('fureso_par3');
-      this.getPlayer('otto');
+    this.getCourse('fureso_par3');
+    this.getPlayer('otto');
   }
 
   getCourse(course: string) {
@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
       console.log(res)
     });
   }
+
   getPlayer(player: string) {
     this._httpClient.get('assets/' + player + '.json').subscribe(res => {
       console.log(res)
