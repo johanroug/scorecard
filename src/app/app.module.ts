@@ -12,6 +12,7 @@ import { ScorecardComponent } from './scorecard/scorecard.component';
     ScorecardComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
