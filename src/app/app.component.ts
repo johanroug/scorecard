@@ -18,13 +18,18 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getCourse('fureso_par3');
+    this.getCourse('9');
     this.getPlayer('otto');
+  }
+
+  choose(count: string) {
+    this.getCourse(count);
   }
 
   getCourse(course: string) {
     return this._httpClient.get('assets/' + course + '.json').subscribe((res) => {
       this.course = res;
+      console.log(res)
       this.courseLoaded = true;
     });
   }
