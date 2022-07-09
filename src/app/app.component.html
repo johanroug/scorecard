@@ -1,2 +1,1 @@
-test
-<app-scorecard></app-scorecard>
+<app-scorecard *ngIf="courseLoaded && playerLoaded" [course]="course"></app-scorecard>

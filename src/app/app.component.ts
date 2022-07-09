@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Icourse } from './scorecard/model';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'golf';
+  course: any;
+  courseLoaded = false;
+  playerLoaded = false;
 
   constructor(
     private _httpClient: HttpClient
@@ -19,14 +23,16 @@ export class AppComponent implements OnInit {
   }
 
   getCourse(course: string) {
-    this._httpClient.get('assets/' + course + '.json').subscribe(res => {
-      console.log(res)
+    return this._httpClient.get('assets/' + course + '.json').subscribe((res) => {
+      this.course = res;
+      this.courseLoaded = true;
     });
   }
 
   getPlayer(player: string) {
     this._httpClient.get('assets/' + player + '.json').subscribe(res => {
       console.log(res)
+      this.playerLoaded = true;
     });
   }
 }

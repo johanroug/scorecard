@@ -6,18 +6,20 @@
 
   Persons:
   <div formArrayName="persons">
-    <div *ngFor="let person of persons.controls; let i=index">
-      <div [formGroupName]="i">
-        {{i}} <br>
+    <ng-container *ngFor="let person of persons.controls; let indexPerson=index">
+      <div [formGroupName]="indexPerson">
         <input type="text" formControlName="name"> <br>
         <input type="text" formControlName="hc">
-        <div formGroupName="holes">
-          <input type="text" formControlName="hole1">
-        </div>
 
-        <button (click)="removePerson(i)">Remove</button>
+        <ng-container formGroupName="holes">
+          <ng-container *ngFor="let hole of holes.controls; let indexHole=index" [formGroupName]="indexHole">
+            <input type="text" [formControlName]="'score'">
+          </ng-container>
+        </ng-container>
+
+        <button (click)="removePerson(indexPerson)">Remove</button>
       </div>
-    </div>
+    </ng-container>
   </div>
   <button type="submit">Submit</button>
 </form>
